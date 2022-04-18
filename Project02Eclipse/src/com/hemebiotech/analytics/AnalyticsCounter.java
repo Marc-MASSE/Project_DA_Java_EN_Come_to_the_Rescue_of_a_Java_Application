@@ -16,10 +16,8 @@ public class AnalyticsCounter {
 
 		int headCount = 0; // counts headaches
 		while (line != null) {
-			System.out.println("symptom from file: " + line);
 			if (line.equals("headache")) {
 				headacheCount++;
-				System.out.println("number of headaches: " + headCount);
 			} else if (line.equals("rash")) {
 				rashCount++;
 			} else if (line.equals("dialated pupils")) {
