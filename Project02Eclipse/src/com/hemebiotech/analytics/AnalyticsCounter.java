@@ -18,11 +18,11 @@ public class AnalyticsCounter {
 		while (line != null) {
 			System.out.println("symptom from file: " + line);
 			if (line.equals("headache")) {
-				headCount++;
+				headacheCount++;
 				System.out.println("number of headaches: " + headCount);
-			} else if (line.equals("rush")) {
+			} else if (line.equals("rash")) {
 				rashCount++;
-			} else if (line.contains("pupils")) {
+			} else if (line.equals("dialated pupils")) {
 				pupilCount++;
 			}
 
