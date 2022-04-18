@@ -14,7 +14,6 @@ public class AnalyticsCounter {
 		BufferedReader reader = new BufferedReader(new FileReader("Project02Eclipse/symptoms.txt"));
 		String line = reader.readLine();
 
-		int headCount = 0; // counts headaches
 		while (line != null) {
 			if (line.equals("headache")) {
 				headacheCount++;
