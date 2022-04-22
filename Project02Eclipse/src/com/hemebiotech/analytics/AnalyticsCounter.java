@@ -1,37 +1,33 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;
-	private static int rashCount = 0;
-	private static int pupilCount = 0;
 
-	public static void main(String args[]) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader(new FileReader("Project02Eclipse/symptoms.txt"));
-		String line = reader.readLine();
+	public static void main(String[] args) throws IOException {
 
-		while (line != null) {
-			if (line.equals("headache")) {
-				headacheCount++;
-			} else if (line.equals("rash")) {
-				rashCount++;
-			} else if (line.equals("dialated pupils")) {
-				pupilCount++;
-			}
+		String pathToSymptomsDocument = "Project02Eclipse/symptoms.txt";
+		List<String> orderedList;
+		TreeMap<String, Integer> symptomsTree = new TreeMap<>();
 
-			line = reader.readLine(); // get another symptom
-		}
-		reader.close();
+		// Read a document line by line
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile(pathToSymptomsDocument);
+		orderedList = symptomReader.getSymptoms();
 
-		// next generate output
-		FileWriter writer = new FileWriter("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
+		// Put symptomList in alphabetic order
+		Collections.sort(orderedList);
+
+		// Count symptoms occurences
+		OccurenceCounterList occurenceCounterList = new OccurenceCounterList(orderedList);
+		symptomsTree = occurenceCounterList.count(orderedList);
+
+		// Create symptoms document
+		CreateResultDocument createResultDocument = new CreateResultDocument(symptomsTree);
+		createResultDocument.create(symptomsTree);
+
 	}
+
 }
