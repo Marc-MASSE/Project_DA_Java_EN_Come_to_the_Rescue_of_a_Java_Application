@@ -13,5 +13,5 @@ public interface ISortAList {
 	/**
 	 * @return a List<String> in alphabetic order
 	 */
-	List<String> getSortedList(List<String> list);
+	List<String> getSortedList();
 }

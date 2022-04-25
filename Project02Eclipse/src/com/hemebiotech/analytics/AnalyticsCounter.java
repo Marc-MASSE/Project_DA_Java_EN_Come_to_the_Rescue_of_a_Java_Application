@@ -10,6 +10,7 @@ public class AnalyticsCounter {
 
 		String pathToSymptomsDocument = "Project02Eclipse/symptoms.txt";
 		List<String> listToOrder;
+		List<String> orderedList;
 		TreeMap<String, Integer> symptomsTree = new TreeMap<>();
 
 		// Read a document line by line
@@ -19,8 +20,8 @@ public class AnalyticsCounter {
 
 		// Put symptomList in alphabetic order
 		// Collections.sort(orderedList);
-		ISortAList orderedList = new SortAListInAlphabeticOrder(listToOrder);
-		orderedList.getSortedList(listToOrder);
+		ISortAList sortAList = new SortAListInAlphabeticOrder(listToOrder);
+		orderedList = sortAList.getSortedList();
 		System.out.println(orderedList);
 
 		// Count symptoms occurences

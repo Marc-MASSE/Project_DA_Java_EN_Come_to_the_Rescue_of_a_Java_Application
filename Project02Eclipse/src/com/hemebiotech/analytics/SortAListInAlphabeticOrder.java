@@ -21,7 +21,7 @@ public class SortAListInAlphabeticOrder implements ISortAList {
 	}
 
 	@Override
-	public List<String> getSortedList(List<String> list) {
+	public List<String> getSortedList() {
 		Collections.sort(list);
 		return list;
 	}
