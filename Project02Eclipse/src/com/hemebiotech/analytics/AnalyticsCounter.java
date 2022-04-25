@@ -25,8 +25,8 @@ public class AnalyticsCounter {
 		System.out.println(orderedList);
 
 		// Count symptoms occurences
-		OccurenceCounterList occurenceCounterList = new occurenceCounterList(orderedList);
-		symptomsTree = occurenceCounterList.count();
+		OccurenceCounterList occurenceCounterList = new OccurenceCounterList(orderedList);
+		symptomsTree = occurenceCounterList.count(orderedList);
 
 		// Create symptoms document
 		CreateResultDocument createResultDocument = new CreateResultDocument(symptomsTree);
