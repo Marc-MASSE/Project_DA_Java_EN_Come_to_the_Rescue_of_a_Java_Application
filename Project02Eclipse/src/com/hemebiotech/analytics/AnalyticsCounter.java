@@ -9,6 +9,7 @@ public class AnalyticsCounter {
 	public static void main(String[] args) throws IOException {
 
 		String pathToSymptomsDocument = "Project02Eclipse/symptoms.txt";
+		String pathToResultDocument = "Project02Eclipse/result.out";
 		List<String> listToOrder;
 		List<String> orderedList;
 		TreeMap<String, Integer> symptomsTree = new TreeMap<>();
@@ -16,20 +17,17 @@ public class AnalyticsCounter {
 		// Read a document line by line
 		ISymptomReader symptomReader = new ReadSymptomDataFromFile(pathToSymptomsDocument);
 		listToOrder = symptomReader.getSymptoms();
-		// System.out.println(listToOrder);
 
 		// Put symptomList in alphabetic order
-		// Collections.sort(orderedList);
 		ISortAList sortAList = new SortAListInAlphabeticOrder(listToOrder);
 		orderedList = sortAList.getSortedList();
-		System.out.println(orderedList);
 
 		// Count symptoms occurences
 		IOccurenceCounter occurenceCounterList = new OccurenceCounterList(orderedList);
 		symptomsTree = occurenceCounterList.getOccurences();
 
 		// Create symptoms document
-		CreateResultDocument createResultDocument = new CreateResultDocument(symptomsTree);
+		CreateResultDocument createResultDocument = new CreateResultDocument(symptomsTree, pathToResultDocument);
 		createResultDocument.create();
 
 	}
