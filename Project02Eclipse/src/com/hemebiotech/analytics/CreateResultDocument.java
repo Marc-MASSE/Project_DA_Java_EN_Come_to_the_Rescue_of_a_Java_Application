@@ -5,15 +5,28 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.TreeMap;
 
-public class CreateResultDocument {
+/**
+ * Simple brute force implementation
+ *
+ */
 
-	TreeMap<String, Integer> treeMap = new TreeMap<>();
+public class CreateResultDocument implements IDocumentCreator {
+
+	private TreeMap<String, Integer> treeMap = new TreeMap<>();
+
+	/**
+	 * To create result.out document based on the TreeMap created by
+	 * OccurenceCounterList
+	 * 
+	 * @param treeMap
+	 */
 
 	public CreateResultDocument(TreeMap<String, Integer> treeMap) {
 		this.treeMap = treeMap;
 	}
 
-	public void create(TreeMap<String, Integer> treeMap) throws IOException {
+	@Override
+	public void create() throws IOException {
 
 		FileWriter writer = new FileWriter("Project02Eclipse/result.out");
 

@@ -25,12 +25,12 @@ public class AnalyticsCounter {
 		System.out.println(orderedList);
 
 		// Count symptoms occurences
-		OccurenceCounterList occurenceCounterList = new OccurenceCounterList(orderedList);
-		symptomsTree = occurenceCounterList.count(orderedList);
+		IOccurenceCounter occurenceCounterList = new OccurenceCounterList(orderedList);
+		symptomsTree = occurenceCounterList.getOccurences();
 
 		// Create symptoms document
 		CreateResultDocument createResultDocument = new CreateResultDocument(symptomsTree);
-		createResultDocument.create(symptomsTree);
+		createResultDocument.create();
 
 	}
 
