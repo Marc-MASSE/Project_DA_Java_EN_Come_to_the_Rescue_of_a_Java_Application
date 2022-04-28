@@ -14,19 +14,28 @@ public class AnalyticsCounter {
 		List<String> orderedList;
 		TreeMap<String, Integer> symptomsTree = new TreeMap<>();
 
-		// Read a document line by line
-		ISymptomReader symptomReader = new ReadSymptomDataFromFile(pathToSymptomsDocument);
-		listToOrder = symptomReader.getSymptoms();
+		listToOrder = readDocument(pathToSymptomsDocument);
 
-		// Put symptomList in alphabetic order
-		ISortAList sortAList = new SortAListInAlphabeticOrder(listToOrder);
-		orderedList = sortAList.getSortedList();
+		orderedList = sortInAlphabeticOrder(listToOrder);
 
-		// Count symptoms occurences
-		IOccurenceCounter occurenceCounterList = new OccurenceCounterList(orderedList);
-		symptomsTree = occurenceCounterList.getOccurences();
+		symptomsTree = countOccurencesInAList(orderedList);
 
 		createDocument(symptomsTree, pathToResultDocument);
+	}
+
+	private static List<String> readDocument(String path) {
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile(path);
+		return symptomReader.getSymptoms();
+	}
+
+	private static List<String> sortInAlphabeticOrder(List<String> list) {
+		ISortAList sortAList = new SortAListInAlphabeticOrder(list);
+		return sortAList.getSortedList();
+	}
+
+	private static TreeMap<String, Integer> countOccurencesInAList(List<String> list) {
+		IOccurenceCounter occurenceCounterList = new OccurenceCounterList(list);
+		return occurenceCounterList.getOccurences();
 	}
 
 	private static void createDocument(TreeMap<String, Integer> treeMap, String path) {
