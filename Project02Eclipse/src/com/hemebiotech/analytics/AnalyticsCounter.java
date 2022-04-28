@@ -26,10 +26,11 @@ public class AnalyticsCounter {
 		IOccurenceCounter occurenceCounterList = new OccurenceCounterList(orderedList);
 		symptomsTree = occurenceCounterList.getOccurences();
 
-		// Create symptoms document
-		CreateResultDocument createResultDocument = new CreateResultDocument(symptomsTree, pathToResultDocument);
-		createResultDocument.create();
-
+		createDocument(symptomsTree, pathToResultDocument);
 	}
 
+	private static void createDocument(TreeMap<String, Integer> treeMap, String path) {
+		IDocumentCreator createResultDocument = new CreateResultDocument(treeMap, path);
+		createResultDocument.create();
+	}
 }

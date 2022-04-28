@@ -10,5 +10,5 @@ public interface IDocumentCreator {
 	 * @author marcm
 	 * @throws IOException
 	 */
-	void create() throws IOException;
+	void create();
 }

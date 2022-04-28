@@ -9,7 +9,6 @@ import java.util.TreeMap;
  * Simple brute force implementation
  *
  */
-
 public class CreateResultDocument implements IDocumentCreator {
 
 	private TreeMap<String, Integer> treeMap = new TreeMap<>();
@@ -19,26 +18,29 @@ public class CreateResultDocument implements IDocumentCreator {
 	 * To create result.out document based on the TreeMap created by
 	 * OccurenceCounterList
 	 * 
-	 * @param treeMap
+	 * @param treeMap , path
 	 */
-
 	public CreateResultDocument(TreeMap<String, Integer> treeMap, String path) {
 		this.treeMap = treeMap;
 		this.path = path;
 	}
 
 	@Override
-	public void create() throws IOException {
+	public void create() {
 
-		FileWriter writer = new FileWriter(path);
+		FileWriter writer;
+		try {
+			writer = new FileWriter(path);
+			Set<String> keys = treeMap.keySet();
 
-		// to browse through all treeMap keys
-		Set<String> keys = treeMap.keySet();
-
-		for (String key : keys) {
-			writer.write(key + " : " + treeMap.get(key) + "\n");
+			for (String key : keys) {
+				writer.write(key + " : " + treeMap.get(key) + "\n");
+			}
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("Create document error : " + e.getMessage());
 		}
-		writer.close();
+
 	}
 
 }
