@@ -38,7 +38,7 @@ public class CreateResultDocument implements IDocumentCreator {
 			}
 			writer.close();
 		} catch (IOException e) {
-			System.out.println("Create document error : " + e.getMessage());
+			e.printStackTrace();
 		}
 
 	}
