@@ -8,6 +8,11 @@ public class AnalyticsCounter {
 
 	public static void main(String[] args) throws IOException {
 
+		mainProgram();
+
+	}
+
+	private static void mainProgram() {
 		String pathToSymptomsDocument = "Project02Eclipse/symptoms.txt";
 		String pathToResultDocument = "Project02Eclipse/result.out";
 		List<String> listToOrder;
