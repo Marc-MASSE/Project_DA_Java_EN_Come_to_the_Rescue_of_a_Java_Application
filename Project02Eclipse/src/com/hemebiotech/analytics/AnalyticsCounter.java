@@ -4,6 +4,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.TreeMap;
 
+/**
+ * Count the symptoms occurences contained in symptoms.txt and create a result
+ * document named result.out
+ * 
+ * @author marcm
+ *
+ */
+
 public class AnalyticsCounter {
 
 	public static void main(String[] args) throws IOException {
