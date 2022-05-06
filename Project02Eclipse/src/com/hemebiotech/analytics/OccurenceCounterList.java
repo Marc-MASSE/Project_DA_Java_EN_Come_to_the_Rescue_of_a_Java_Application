@@ -11,7 +11,7 @@ import java.util.TreeMap;
 
 public class OccurenceCounterList implements IOccurenceCounter {
 
-	private List<String> list;
+	private List<String> symptomsList;
 
 	/**
 	 * To count the number of occurrences of symptoms in list
@@ -20,7 +20,7 @@ public class OccurenceCounterList implements IOccurenceCounter {
 	 */
 
 	public OccurenceCounterList(List<String> list) {
-		this.list = list;
+		this.symptomsList = list;
 	}
 
 	@Override
@@ -28,9 +28,9 @@ public class OccurenceCounterList implements IOccurenceCounter {
 
 		TreeMap<String, Integer> treeMap = new TreeMap<>();
 
-		for (String key : list) {
-			if (!treeMap.containsKey(key)) {
-				treeMap.put(key, Collections.frequency(list, key));
+		for (String symptom : symptomsList) {
+			if (!treeMap.containsKey(symptom)) {
+				treeMap.put(symptom, Collections.frequency(symptomsList, symptom));
 			}
 
 		}
