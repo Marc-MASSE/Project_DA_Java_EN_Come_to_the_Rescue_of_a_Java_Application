@@ -27,32 +27,15 @@ public class AnalyticsCounter {
 		List<String> orderedList;
 		TreeMap<String, Integer> symptomsTree = new TreeMap<>();
 
-		listToOrder = readDocument(pathToSymptomsDocument);
+		IAnalytic analytic = new Analytic();
 
-		orderedList = sortInAlphabeticOrder(listToOrder);
+		listToOrder = analytic.readDocument(pathToSymptomsDocument);
 
-		symptomsTree = countOccurencesInAList(orderedList);
+		orderedList = analytic.sortInAlphabeticOrder(listToOrder);
 
-		createDocument(symptomsTree, pathToResultDocument);
+		symptomsTree = analytic.countOccurencesInAList(orderedList);
+
+		analytic.createDocument(symptomsTree, pathToResultDocument);
 	}
 
-	private static List<String> readDocument(String path) {
-		ISymptomReader symptomReader = new ReadSymptomDataFromFile(path);
-		return symptomReader.getSymptoms();
-	}
-
-	private static List<String> sortInAlphabeticOrder(List<String> list) {
-		ISortAList sortAList = new SortAListInAlphabeticOrder(list);
-		return sortAList.getSortedList();
-	}
-
-	private static TreeMap<String, Integer> countOccurencesInAList(List<String> list) {
-		IOccurenceCounter occurenceCounterList = new OccurenceCounterList(list);
-		return occurenceCounterList.getOccurences();
-	}
-
-	private static void createDocument(TreeMap<String, Integer> treeMap, String path) {
-		IDocumentCreator createResultDocument = new CreateResultDocument(treeMap, path);
-		createResultDocument.create();
-	}
 }
